@@ -1,0 +1,81 @@
+I started this project.
+Day 1:
+    I built a simple structure of the project.
+        Learning:
+            I learned about pathlib which is used to replace old file path handling.
+            Old path handling was like path = 'path as string.' which contains too many //,
+            breaks, messy and harder to read and manage.
+            Modern way is pathlib which is cleaner, crossplatform, industry standard in
+            industry standard automation scripts.
+        
+        About pathlib:
+            from pathlib import path
+            Path is a class that represents a file or folder location.
+            Example:
+                p = Path("myfile.txt")
+            Now p is not a string. It is a Path object with special abilities.
+
+        Key Concepts I used today:
+            1. Path.home()
+            This gives your user home directory:
+            Windows: C:\Users\YourName
+            So,                         downloads = Path.home() / "Downloads"
+            Automatically becomes:      C:\Users\YourName\Downloads
+
+            2. The / Operator in Pathlib
+            This looks weird at first:
+                Path.home() / "Downloads"
+            But it means: Join paths safely
+            Instead of doing:
+                str(Path.home()) + "\\Downloads"
+            Pathlib does it correctly.
+
+            3. .iterdir()
+                downloads_folder.iterdir()
+            Means:
+            Iterate through all items inside the folder
+            Example:
+            for file in downloads_folder.iterdir():
+                print(file)
+            Output could be:
+                css
+                Copy code
+                resume.pdf
+                photo.png
+                video.mp4
+            
+            4. .name
+            Each file is also a Path object. So:
+                file.name
+            Gives only the file name:
+            resume.pdf
+
+Day 2:
+        Key Concepts I used today:
+            5. .suffix
+            Very important for organizing files:
+                file.suffix
+            Example:
+            "resume.pdf" → .pdf
+            "photo.png" → .png
+
+            6. .exists()
+            Check if a file/folder exists:
+                folder.exists()
+            Returns:
+            True/False
+
+            7. .mkdir()
+            Create a folder:
+                Path("PDFs").mkdir()
+            Or safely:
+                Path("PDFs").mkdir(exist_ok=True)
+            So it won’t crash if folder already exists.
+
+            8. .rename() or .replace()
+            Move files:
+                file.replace(new_location)
+            Example:
+                file.replace(downloads_folder / "PDFs" / file.name)
+            Moves the file.
+            
